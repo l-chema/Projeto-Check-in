@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-in JUMP</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="checkin_jump\adolescentes\static\adolescentes\css\style.css">
+</head>
+
+<body class="container">
+    <button id="dark-mode-toggle">Modo Escuro</button>
+    <nav class="d-flex justify-content-between align-items-center p-2 bg-light">
+        <h1>Checkin JUMP</h1>
+        <div>
+            {% if user.is_authenticated %}
+                <span><strong>Olá, {{ user.username }}!</strong></span>
+                <a href="{% url 'logout' %}" class="btn btn-danger">Sair</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-primary">Entrar</a>
+            {% endif %}
+        </div>
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+    <script src="{% static 'js/darkmode.js' %}"></script>
+</body>
+</html>
