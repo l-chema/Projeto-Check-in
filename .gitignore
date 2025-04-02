@@ -1,0 +1,19 @@
+# Ignorar arquivos do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar banco de dados SQLite
+
+# Ignorar configurações do editor de código
+.vscode/
+.idea/
+*.swp
+
+# Ignorar ambiente virtual do Python
+venv/
+env/
+*.env
+
+# Ignorar arquivos de mídia e uploads
