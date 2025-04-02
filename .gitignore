@@ -5,6 +5,7 @@ __pycache__/
 *.pyd
 
 # Ignorar banco de dados SQLite
+db.sqlite3
 
 # Ignorar configurações do editor de código
 .vscode/
