@@ -18,3 +18,5 @@ env/
 *.env
 
 # Ignorar arquivos de mídia e uploads
+*.jpg
+*.png

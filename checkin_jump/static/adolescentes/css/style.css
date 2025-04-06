@@ -7,11 +7,28 @@ body {
 
 /* Tema Escuro */
 body.dark-mode {
-    background-color: #1a1a1a;
+    background-color: #121212;
     color: #ffffff;
 }
 
-/* Estilizar o botão */
+/* Ajustes no cabeçalho no modo escuro */
+body.dark-mode nav {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode h1,
+body.dark-mode nav span,
+body.dark-mode nav a {
+    color: #ffffff;
+}
+
+/* Botão "Sair" no modo escuro */
+body.dark-mode .btn-danger {
+    background-color: #bb2d3b;
+    border-color: #bb2d3b;
+}
+
+/* Estilizar o botão de alternância */
 #dark-mode-toggle {
     position: fixed;
     top: 10px;
@@ -22,6 +39,7 @@ body.dark-mode {
     color: white;
     cursor: pointer;
     border-radius: 5px;
+    transition: background 0.3s;
 }
 
 #dark-mode-toggle:hover {
