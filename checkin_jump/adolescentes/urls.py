@@ -11,7 +11,7 @@ urlpatterns = [
     path('novo/', views.criar_adolescente, name='criar_adolescente'),
     path('editar/<int:id>/', views.editar_adolescente, name='editar_adolescente'),
     path('excluir/<int:id>/', views.excluir_adolescente, name='excluir_adolescente'),
-    path("accounts/login/", auth_views.LoginView.as_view(), name="login"),  # Adiciona a view de login padrão do Django
+    path("login/", auth_views.LoginView.as_view(), name="login"),  # Adiciona a view de login padrão do Django
 ]
 
 
