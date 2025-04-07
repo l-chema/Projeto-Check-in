@@ -70,7 +70,7 @@ def editar_adolescente(request, id):
             return redirect('listar_adolescentes')
     else:
         form = AdolescenteForm(instance=adolescente)
-    return render(request, 'adolescentes/form.html', {'form': form})
+    return render(request, 'adolescentes/criar_adolescente.html', {'form': form})
 
 @login_required
 def excluir_adolescente(request, id):
