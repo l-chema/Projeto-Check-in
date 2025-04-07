@@ -13,3 +13,10 @@ class AdolescenteForm(forms.ModelForm):
         if data_nascimento and data_nascimento > datetime.now().date():
             raise ValidationError("A data de nascimento não pode ser no futuro.")
         return data_nascimento
+
+    def clean_data_inicio(self):
+        data_inicio = self.cleaned_data.get('data_inicio')
+        if data_inicio and data_inicio > datetime.now().date():
+            raise ValidationError("A data de início não pode ser no futuro.")
+        return data_inicio
+
