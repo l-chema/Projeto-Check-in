@@ -48,7 +48,7 @@ def criar_adolescente(request):
                     messages.error(request, "A data de nascimento não pode ser no futuro.")
                     return redirect('criar_adolescente')
             except ValueError:
-                messages.error(request, "Formato de data inválido. Use dd/mm/aaaa.")
+                messages.error(request, "Formato de data inválido. Use dia/mês/ano.")
                 return redirect('criar_adolescente')
 
         # Processa formulário

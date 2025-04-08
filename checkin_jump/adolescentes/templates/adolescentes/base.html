@@ -22,6 +22,47 @@
             {% endif %}
         </div>
     </nav>
+   
+     <!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Check-in JUMP</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listar_adolescentes' %}">Adolescentes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pagina_checkin' %}">Check-in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pagina_pgs' %}">PGs</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item me-2 mt-1">
+                            <span class="navbar-text text-white">Olá, {{ user.username }}!</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="{% url 'logout' %}">Sair</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link text-success" href="{% url 'login' %}">Entrar</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <button id="dark-mode-toggle" class="btn btn-outline-light ms-3">🌙</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>-->
+
     <hr>
     {% block content %}{% endblock %}
     <script src="{% static 'adolescentes/js/darkmode.js' %}"></script>

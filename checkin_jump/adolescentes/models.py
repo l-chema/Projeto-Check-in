@@ -9,7 +9,7 @@ class Adolescente(models.Model):
         ("M", "Masculino"),
         ("F", "Feminino"),
     ]
-    genero = models.CharField(max_length=1, choices=GENERO_CHOICES, blank=True, null=True)
+    genero = models.CharField(max_length=1, choices=GENERO_CHOICES, blank=True, null=False)
     pg = models.CharField(max_length=50, blank=True, null=True)
     data_inicio = models.DateField(blank=True, null=True)
 
