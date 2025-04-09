@@ -9,7 +9,7 @@ Sistema web desenvolvido em Django para cadastro e check-in de adolescentes em e
 - Upload de foto
 - Autenticação com login e logout
 - Controle de permissões por tipo de usuário
-- Dark mode 😎
+- Dark mode
 - Painel de administração Django
 - Interface simples e responsiva com Bootstrap
 
@@ -19,51 +19,51 @@ Sistema web desenvolvido em Django para cadastro e check-in de adolescentes em e
 
 ### 1. Clone o repositório
 
-```bash
-git clone https://github.com/SEU-USUARIO/Projeto-Check-in.git
+**bash**
+git clone https://github.com/l-chema/Projeto-Check-in.git
 cd Projeto-Check-in
-```
+
 
 ### 2. Crie e ative um ambiente virtual
 
 #### Windows:
-```bash
+bash
 python -m venv venv
 venv\Scripts\activate
-```
+
 
 #### Linux/macOS:
-```bash
+bash
 python3 -m venv venv
 source venv/bin/activate
-```
+
 
 ### 3. Instale as dependências
 
-```bash
+bash
 pip install -r requirements.txt
-```
+
 
 ### 4. Aplique as migrações
 
-```bash
+bash
 python manage.py migrate
-```
+
 
 ### 5. (Opcional) Crie um superusuário para acessar o admin
 
-```bash
+bash
 python manage.py createsuperuser
-```
+
 
 ### 6. Rode o servidor
 
-```bash
+bash
 python manage.py runserver
-```
+
 
 Abra no navegador:  
-📎 `http://127.0.0.1:8000/`
+`http://127.0.0.1:8000/`
 
 ---
 
@@ -96,14 +96,3 @@ Projeto-Check-in/
 - Bootstrap 5
 - Git e GitHub
 
----
-
-## 👥 Equipe
-
-- Eduardo e equipe do projeto Checkin JUMP
-
----
-
-## 📬 Contato
-
-Em caso de dúvidas ou sugestões, fale com a equipe no GitHub ou pessoalmente 😉
