@@ -1,0 +1,16 @@
+{% extends 'adolescentes/base.html' %}
+{% block content %}
+<h2>Check-in de Eventos</h2>
+{% if perms.checkin.add_diaevento %}
+    <a href="{% url 'novo_dia_evento' %}" class="btn btn-success mb-3">Adicionar Dia de Evento</a>
+{% endif %}
+<ul class="list-group">
+    {% for dia in dias %}
+    <li class="list-group-item">
+        <a href="{% url 'checkin_dia' dia.id %}">{{ dia.data|date:"d/m/Y" }}</a>
+    </li>
+    {% empty %}
+    <li class="list-group-item">Nenhum dia registrado ainda.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

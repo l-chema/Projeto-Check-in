@@ -5,7 +5,7 @@ from .forms import AdolescenteForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.messages import get_messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 def login_view(request):
     if request.method == "POST":
@@ -30,6 +30,14 @@ def logout_view(request):
 def listar_adolescentes(request):
     adolescentes = Adolescente.objects.all()
     return render(request, 'adolescentes/listar.html', {'adolescentes': adolescentes})
+
+@login_required
+def pagina_checkin(request):
+    return render(request, 'checkin.html')
+
+@login_required
+def pagina_pgs(request):
+    return render(request, 'pgs.html')
 
 @login_required
 def criar_adolescente(request):
@@ -79,3 +87,46 @@ def excluir_adolescente(request, id):
         adolescente.delete()
         return redirect('listar_adolescentes')
     return render(request, 'adolescentes/confirmar_exclusao.html', {'adolescente': adolescente})
+
+@login_required
+def lista_dias_evento(request):
+    dias = DiaEvento.objects.all().order_by('-data')
+    return render(request, 'checkin/lista_dias.html', {'dias': dias})
+
+@login_required
+@permission_required('checkin.add_diaevento', raise_exception=True)
+def adicionar_dia_evento(request):
+    if request.method == 'POST':
+        data = request.POST.get('data')
+        if DiaEvento.objects.filter(data=data).exists():
+            messages.warning(request, "Esse dia já foi adicionado.")
+        else:
+            DiaEvento.objects.create(data=data)
+        return redirect('pagina_checkin')
+    return render(request, 'checkin/adicionar_dia.html')
+
+@login_required
+def checkin_dia(request, dia_id):
+    dia = get_object_or_404(DiaEvento, pk=dia_id)
+    adolescentes = Adolescente.objects.all()
+
+    if request.method == 'POST':
+        presencas_ids = request.POST.getlist('presentes')
+        Presenca.objects.filter(dia=dia).delete()
+        for adol in adolescentes:
+            Presenca.objects.create(
+                adolescente=adol,
+                dia=dia,
+                presente=str(adol.id) in presencas_ids
+            )
+        messages.success(request, "Check-in realizado com sucesso!")
+        return redirect('pagina_checkin')
+
+    presencas = Presenca.objects.filter(dia=dia)
+    presentes_ids = presencas.filter(presente=True).values_list('adolescente_id', flat=True)
+
+    return render(request, 'checkin/checkin_dia.html', {
+        'dia': dia,
+        'adolescentes': adolescentes,
+        'presentes_ids': presentes_ids
+    })

@@ -15,3 +15,14 @@ class Adolescente(models.Model):
 
     def __str__(self):
         return f"{self.nome} {self.sobrenome}"
+
+class DiaEvento(models.Model):
+    data = models.DateField(unique=True)
+
+    def __str__(self):
+        return self.data.strftime('%d/%m/%Y')
+
+class Presenca(models.Model):
+    adolescente = models.ForeignKey(Adolescente, on_delete=models.CASCADE)
+    dia = models.ForeignKey(DiaEvento, on_delete=models.CASCADE)
+    presente = models.BooleanField(default=False)
