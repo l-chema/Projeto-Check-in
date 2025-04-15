@@ -12,11 +12,15 @@
 <body class="container">
     <button id="dark-mode-toggle">Modo Escuro</button>
     <nav class="d-flex justify-content-between align-items-center p-2">
-        <h1>Checkin JUMP</h1>
+        <h1>Check-in JUMP</h1>
         <div>
+            <a href="{% url 'listar_adolescentes' %}" class="btn btn-outline-primary me-2">Adolescentes</a>
+            <a href="{% url 'pagina_checkin' %}" class="btn btn-outline-success me-2">Check-in</a>
+            <a href="{% url 'pagina_pgs' %}" class="btn btn-outline-secondary me-2">PGs</a>
+    
             {% if user.is_authenticated %}
                 <span><strong>Olá, {{ user.username }}!</strong></span>
-                <a href="{% url 'logout' %}" class="btn btn-danger">Sair</a>
+                <a href="{% url 'logout' %}" class="btn btn-danger ms-2">Sair</a>
             {% else %}
                 <a href="{% url 'login' %}" class="btn btn-primary">Entrar</a>
             {% endif %}

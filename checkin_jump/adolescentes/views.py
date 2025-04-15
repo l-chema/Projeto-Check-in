@@ -1,6 +1,6 @@
-from datetime import datetime
+from datetime import date, datetime
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Adolescente
+from .models import Adolescente, DiaEvento, Presenca
 from .forms import AdolescenteForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -100,6 +100,8 @@ def adicionar_dia_evento(request):
         data = request.POST.get('data')
         if DiaEvento.objects.filter(data=data).exists():
             messages.warning(request, "Esse dia já foi adicionado.")
+        if data and datetime.strptime(data, "%Y-%m-%d").date() < date.today():
+            messages.warning(request, "Não é possível adicionar um dia no passado.")
         else:
             DiaEvento.objects.create(data=data)
         return redirect('pagina_checkin')
