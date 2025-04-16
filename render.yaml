@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: checkin-jump
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn checkin_jump.checkin_jump.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: checkin_jump.checkin_jump.settings
+      - key: PYTHON_VERSION
+        value: 3.11
+      - key: SECRET_KEY
+        value: 9d9a5517c282445f81269e2a25b83b85
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: .onrender.com
