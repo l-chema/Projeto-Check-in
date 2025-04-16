@@ -3,10 +3,10 @@ services:
     name: checkin-jump
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn checkin_jump.checkin_jump.wsgi:application
+    startCommand: gunicorn Projeto-Check-in-main.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: checkin_jump.checkin_jump.settings
+        value: Projeto-Check-in-main.settings
       - key: PYTHON_VERSION
         value: 3.11
       - key: SECRET_KEY

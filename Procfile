@@ -1,1 +1,1 @@
-web: gunicorn checkin_jump.checkin_jump.wsgi:application
+web: gunicorn Projeto-Check-in-main.wsgi:application
