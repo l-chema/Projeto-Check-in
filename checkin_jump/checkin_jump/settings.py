@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'checkin_jump.wsgi.application'
+WSGI_APPLICATION = 'checkin_jump/checkin_jump.wsgi.application'
 
 
 # Database
