@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'checkin_jump.adolescentes',
+    'checkin_jump.adolescentes.apps.AdolescentesConfig',
 ]
 
 MIDDLEWARE = [
