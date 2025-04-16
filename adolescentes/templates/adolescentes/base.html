@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-in JUMP</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'adolescentes/css/style.css' %}">
+</head>
+
+<body class="container">
+    <button id="dark-mode-toggle">Modo Escuro</button>
+    <nav class="d-flex justify-content-between align-items-center p-2">
+        <h1>Check-in JUMP</h1>
+        <div>
+            <a href="{% url 'listar_adolescentes' %}" class="btn btn-outline-primary me-2">Adolescentes</a>
+            <a href="{% url 'pagina_checkin' %}" class="btn btn-outline-success me-2">Check-in</a>
+            <a href="{% url 'pagina_pgs' %}" class="btn btn-outline-secondary me-2">PGs</a>
+    
+            {% if user.is_authenticated %}
+                <span><strong>Olá, {{ user.username }}!</strong></span>
+                <a href="{% url 'logout' %}" class="btn btn-danger ms-2">Sair</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-primary">Entrar</a>
+            {% endif %}
+        </div>
+    </nav>
+   
+     <!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Check-in JUMP</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listar_adolescentes' %}">Adolescentes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pagina_checkin' %}">Check-in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pagina_pgs' %}">PGs</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item me-2 mt-1">
+                            <span class="navbar-text text-white">Olá, {{ user.username }}!</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="{% url 'logout' %}">Sair</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link text-success" href="{% url 'login' %}">Entrar</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <button id="dark-mode-toggle" class="btn btn-outline-light ms-3">🌙</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>-->
+
+    <hr>
+    {% block content %}{% endblock %}
+    <script src="{% static 'adolescentes/js/darkmode.js' %}"></script>
+</body>
+</html>

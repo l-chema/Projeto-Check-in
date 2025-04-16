@@ -1,0 +1,39 @@
+{% extends 'adolescentes/base.html' %}
+{% block content %}
+<a href="{% url 'criar_adolescente' %}" class="btn btn-primary">Adicionar Adolescente</a>
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Gênero</th>
+            <th>Data de Nascimento</th>
+            <th>Foto</th>
+            <th>PG</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for adolescente in adolescentes %}
+        <tr>
+            <td>{{ adolescente.nome }}</td>
+            <td>{{ adolescente.sobrenome }}</td>
+            <td>{{ adolescente.genero }}</td>
+            <td>{{ adolescente.data_nascimento }}</td>
+            <td>
+                {% if adolescente.foto %}
+                <img src="{{ adolescente.foto.url }}" width="70">
+                {% else %}
+                Sem foto
+                {% endif %}
+            </td>
+            <td>{{ adolescente.pg }}</td>
+            <td>
+                <a href="{% url 'editar_adolescente' adolescente.id %}" class="btn btn-secondary">Editar</a>
+                <a href="{% url 'excluir_adolescente' adolescente.id %}" class="btn btn-danger">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

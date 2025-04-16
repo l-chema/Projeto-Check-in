@@ -1,0 +1,11 @@
+{% extends 'adolescentes/base.html' %}
+
+{% block content %}
+<h2>Tem certeza que deseja excluir "{{ adolescente.nome }} {{ adolescente.sobrenome }}"?</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+    <a href="{% url 'listar_adolescentes' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
